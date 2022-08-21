@@ -1,10 +1,6 @@
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(req: NextRequest, _event: NextFetchEvent) {
-  if (req.nextUrl.pathname.startsWith('/api/get-url/')) {
-    return;
-  }
-
   const slug = req.nextUrl.pathname.split('/').pop();
 
   if (!slug) {
@@ -17,3 +13,7 @@ export async function middleware(req: NextRequest, _event: NextFetchEvent) {
     return NextResponse.redirect(data.url);
   }
 }
+
+export const config = {
+  matcher: ['/l/:slug*']
+};

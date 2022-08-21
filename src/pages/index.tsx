@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
         <main className={styles.main}>
           <section className={styles.form}>
-            <label htmlFor="slug">https://my-site.vercel.app/</label>
+            <label htmlFor="slug">https://my-site.vercel.app/l/</label>
             <input id="slug" type="text" placeholder="your-slug" />
             <button>Random</button>
             <label htmlFor="url">Destination URL:</label>
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
           <p className={styles.result}>
             <span>Your link:</span>{' '}
             <code className={styles.code} tabIndex={0} role="button">
-              https://my-site.vercel.app/your-slug
+              https://my-site.vercel.app/l/your-slug
             </code>
           </p>
         </main>

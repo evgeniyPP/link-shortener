@@ -1,13 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { ShortLink } from '@prisma/client';
 
 import { prisma } from '../../../db/client';
 
-const getUrl = async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function getUrlBySlug(
+  req: NextApiRequest,
+  res: NextApiResponse<ShortLink | { error: string }>
+) {
   const slug = req.query.slug;
 
   if (!slug || typeof slug !== 'string') {
-    res.statusCode = 404;
-    res.json({ message: 'No slug was provided' });
+    res.status(404).json({ error: 'The valid slug was not provided' });
     return;
   }
 
@@ -20,12 +23,9 @@ const getUrl = async (req: NextApiRequest, res: NextApiResponse) => {
   });
 
   if (!data) {
-    res.statusCode = 404;
-    res.json({ message: 'The url was not found' });
+    res.status(404).json({ error: 'The url was not found' });
     return;
   }
 
   return res.json(data);
-};
-
-export default getUrl;
+}

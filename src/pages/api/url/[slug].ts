@@ -3,7 +3,7 @@ import { ShortLink } from '@prisma/client';
 
 import { prisma } from '../../../db/client';
 
-export default async function getUrlBySlug(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ShortLink | { error: string }>
 ) {

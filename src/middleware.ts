@@ -7,7 +7,7 @@ export async function middleware(req: NextRequest, _event: NextFetchEvent) {
     return;
   }
 
-  const data = await fetch(`${req.nextUrl.origin}/api/get-url/${slug}`).then(r => r.json());
+  const data = await fetch(`${req.nextUrl.origin}/api/url/${slug}`).then(r => r.json());
 
   if (data?.url) {
     return NextResponse.redirect(data.url);
